@@ -17,7 +17,7 @@ public class Main {
         char myAvatar = scanner.next().charAt(0);
         long[] playerPos = new long[] {0, 0};
         long[] direction = new long[] {0, 0};
-        long[] playfieldSize = new long[] {6, 5};
+        long[] playfieldSize = new long[] {12, 8};
         boolean running = true;
         while (running) {
             System.out.println(generate(playfieldSize[0], playfieldSize[1], myAvatar, playerPos));
