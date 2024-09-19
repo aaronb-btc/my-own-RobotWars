@@ -9,6 +9,7 @@ public class Main {
         String username = scanner.next();
         System.out.println("Welcome, " + username  + "!");
         GeneratePlayfield playfield_generator = new GeneratePlayfield();
-        playfield_generator.main();
+        long[] playerPos = new long[] {0, 0};
+        playfield_generator.main(6, 5, playerPos);
     }
 }
