@@ -1,25 +1,31 @@
 package com.btcag.bootcamp;
 
 public class GeneratePlayfield {
-    public static void main(long width, long height, char robot, long[] robotPos) {
+    public static String generate(long width, long height, char robot, long[] robotPos) {
+        String playfield = "";
+        char dash = '-';
+        char pipe = '|';
+        char space = ' ';
         for (long y = 0; y < height; y++) {
-            for (long x = 0; x < width * 4; x++) {
-                System.out.print("-");
+            for (long x = 0; x < width * 4 + 1; x++) {
+                playfield += dash;
             }
-            System.out.println('-');
+            playfield += '\n';
             for (long x = 0; x < width; x++) {
-                System.out.print("| ");
-                if (x == robotPos[0] && y == robotPos[0]) {
-                    System.out.print(robot);
+                playfield += "| ";
+                if (x == robotPos[0] && y == robotPos[1]) {
+                    playfield += robot;
                 } else {
-                    System.out.print(' ');
+                    playfield += space;
                 }
-                System.out.print(' ');
+                playfield += space;
             }
-            System.out.println('|');
+            playfield += pipe;
+            playfield += '\n';
         }
         for (long x = 0; x < width * 4 + 1; x++) {
-            System.out.print('-');
+            playfield += dash;
         }
+        return playfield;
     }
 }
