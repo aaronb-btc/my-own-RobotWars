@@ -20,7 +20,7 @@ public class Main {
         long[] playfieldSize = new long[] {6, 5};
         boolean running = true;
         while (running) {
-            System.out.println(generate(6, 5, myAvatar, playerPos));
+            System.out.println(generate(playfieldSize[0], playfieldSize[1], myAvatar, playerPos));
             System.out.println("Wohin willst du dich bewegen?\nW: ↑   A: ←   S: ↓   D: →");
             char input = scanner.next().toLowerCase().charAt(0);
             switch (input) {
