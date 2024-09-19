@@ -2,6 +2,8 @@ package com.btcag.bootcamp;
 
 import java.util.Scanner;
 
+import static com.btcag.bootcamp.GeneratePlayfield.generate;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -13,8 +15,33 @@ public class Main {
         String username = scanner.next();
         System.out.println("Welcome, " + username  + "!\nEnter a character to use as your avatar:");
         char myAvatar = scanner.next().charAt(0);
-        GeneratePlayfield playfield_generator = new GeneratePlayfield();
         long[] playerPos = new long[] {0, 0};
-        playfield_generator.main(6, 5, myAvatar, playerPos);
+        long[] direction = new long[] {0, 0};
+        long[] playfieldSize = new long[] {6, 5};
+        boolean running = true;
+        while (running) {
+            System.out.println(generate(6, 5, myAvatar, playerPos));
+            System.out.println("Wohin willst du dich bewegen?\nW: ↑   A: ←   S: ↓   D: →");
+            char input = scanner.next().toLowerCase().charAt(0);
+            switch (input) {
+                case 'w':
+                    direction[0] = 0;
+                    direction[1] = -1;
+                    break;
+                case 'a':
+                    direction[0] = -1;
+                    direction[1] = 0;
+                    break;
+                case 's':
+                    direction[0] = 0;
+                    direction[1] = 1;
+                    break;
+                case 'd':
+                    direction[0] = 1;
+                    direction[1] = 0;
+                    break;
+            }
+            playerPos = MovePlayer.movePlayer(direction[0], direction[1], playerPos, playfieldSize);
+        }
     }
 }
